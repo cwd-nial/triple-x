@@ -14,7 +14,7 @@ void PrintIntroduction()
     std::cout << "Enter the correct code to continue...\n\n";
 }
 
-void PlayGame()
+bool PlayGame()
 {
     // declare the 3 number code
     const int CodeA = 4;
@@ -40,11 +40,11 @@ void PlayGame()
     // check the entered codes
     if (GuessSum == CodesSum && GuessProduct == CodesProduct)
     {
-        std::cout << "\nYou did it!\n";
+        return true;
     }
     else
     {
-        std::cout << "\nThe bomb exploded and you just died horribly!\n";
+        return false;
     }
 
     std::cout << "The sum for the numbers you entered adds up to: " << GuessSum << "\n";
@@ -54,7 +54,25 @@ void PlayGame()
 int main()
 {
     PrintIntroduction();
-    PlayGame();
+
+    int Round = 1;
+    int MaxRounds = 3;
+    while (Round <= MaxRounds)
+    {
+        bool bLevelComplete = PlayGame(); // 'b' prefix for booleans is an Unreal style-convention
+        if (bLevelComplete == true)
+        {
+            std::cout << "\nYou did it!\n";
+        }
+        else
+        {
+            std::cout << "\nThe bomb exploded and you just died horribly!\n";
+        }
+        std::cin.clear();  // clear any errors
+        std::cin.ignore(); // discard the buffer
+
+        Round++;
+    }
 
     return 0;
 }
