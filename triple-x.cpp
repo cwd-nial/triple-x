@@ -38,6 +38,8 @@ bool PlayGame()
     int GuessProduct = GuessA * GuessB * GuessC;
 
     // check the entered codes
+    std::cout << "The sum for the numbers you entered adds up to: " << GuessSum << "\n";
+    std::cout << "The product for the numbers you entered results in: " << GuessProduct << "\n";
     if (GuessSum == CodesSum && GuessProduct == CodesProduct)
     {
         return true;
@@ -46,9 +48,6 @@ bool PlayGame()
     {
         return false;
     }
-
-    std::cout << "The sum for the numbers you entered adds up to: " << GuessSum << "\n";
-    std::cout << "The product for the numbers you entered results in: " << GuessProduct << "\n";
 }
 
 int main()
@@ -62,11 +61,11 @@ int main()
         bool bLevelComplete = PlayGame(); // 'b' prefix for booleans is an Unreal style-convention
         if (bLevelComplete == true)
         {
-            std::cout << "\nYou did it!\n";
+            std::cout << "\nYou did it!\n\n";
         }
         else
         {
-            std::cout << "\nThe bomb exploded and you just died horribly!\n";
+            std::cout << "\nThe bomb exploded and you just died horribly!\n\n";
         }
         std::cin.clear();  // clear any errors
         std::cin.ignore(); // discard the buffer
