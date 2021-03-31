@@ -1,12 +1,21 @@
 #include <iostream>
 
-int main()
+void PrintIntroduction()
 {
     // print welcome messages to the terminal
-    std::cout << std::endl;
-    std::cout << "You are a secret agent breaking into a secure server room..." << std::endl;
-    std::cout << "Enter the correct code to continue..." << std::endl;
+    std::cout << "\n\n#######                                     #     # \n"
+                 "   #    #####  # #####  #      ######        #   #  \n"
+                 "   #    #    # # #    # #      #              # #   \n"
+                 "   #    #    # # #    # #      #####  #####    #    \n"
+                 "   #    #####  # #####  #      #              # #   \n"
+                 "   #    #   #  # #      #      #             #   #  \n"
+                 "   #    #    # # #      ###### ######       #     # \n\n";
+    std::cout << "\nYou are a secret agent breaking into a secure server room...\n";
+    std::cout << "Enter the correct code to continue...\n\n";
+}
 
+void PlayGame()
+{
     // declare the 3 number code
     const int CodeA = 4;
     const int CodeB = 3;
@@ -16,10 +25,36 @@ int main()
     const int CodesProduct = CodeA * CodeB * CodeC;
 
     // print the CodesSum and CodesProduct to the terminal
-    std::cout << std::endl;
-    std::cout << "+ There are 3 numbers in the code" << std::endl;
-    std::cout << "+ The codes add up to: " << CodesSum << std::endl;
-    std::cout << "+ The codes multiply to give: " << CodesProduct << std::endl;
+    std::cout << "+ There are 3 numbers in the code\n";
+    std::cout << "+ The codes add up to: " << CodesSum << "\n";
+    std::cout << "+ The codes multiply to give: " << CodesProduct << "\n\n";
+
+    // prompt the player to enter their guess
+    std::cout << "Please enter your codes separated by spaces: ";
+    int GuessA, GuessB, GuessC;
+    std::cin >> GuessA >> GuessB >> GuessC;
+
+    int GuessSum = GuessA + GuessB + GuessC;
+    int GuessProduct = GuessA * GuessB * GuessC;
+
+    // check the entered codes
+    if (GuessSum == CodesSum && GuessProduct == CodesProduct)
+    {
+        std::cout << "\nYou did it!\n";
+    }
+    else
+    {
+        std::cout << "\nThe bomb exploded and you just died horribly!\n";
+    }
+
+    std::cout << "The sum for the numbers you entered adds up to: " << GuessSum << "\n";
+    std::cout << "The product for the numbers you entered results in: " << GuessProduct << "\n";
+}
+
+int main()
+{
+    PrintIntroduction();
+    PlayGame();
 
     return 0;
 }
