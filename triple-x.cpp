@@ -79,7 +79,7 @@ int main()
         }
         else
         {
-            std::cout << "\nThe bomb exploded and you just died horribly!\n\n";
+            std::cout << "\nYou failed, be careful and try again to proceed to the next security level!\n\n";
         }
     }
 
