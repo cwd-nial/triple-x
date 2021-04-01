@@ -17,12 +17,13 @@ void PrintIntroduction()
 bool PlayGame(int Difficulty)
 {
     std::cout << "Round " << Difficulty << "\n";
-    std::cout << "#######" << "\n\n";
+    std::cout << "#######"
+              << "\n\n";
 
     // declare the 3 number code
-    const int CodeA = 4;
-    const int CodeB = 3;
-    const int CodeC = 2;
+    const int CodeA = rand();
+    const int CodeB = rand();
+    const int CodeC = rand();
 
     const int CodesSum = CodeA + CodeB + CodeC;
     const int CodesProduct = CodeA * CodeB * CodeC;
@@ -57,26 +58,29 @@ int main()
 {
     PrintIntroduction();
 
-    int DifficultyLevel = 1;
-    int MaxDifficulty = 3;
-    while (DifficultyLevel <= MaxDifficulty)
+    int Round = 1;
+    int const MaxRounds = 3;
+
+    while (Round <= MaxRounds)
     {
-        bool bLevelComplete = PlayGame(DifficultyLevel); // 'b' prefix for booleans is an Unreal style-convention
-        std::cin.clear();                                // clear any errors
-        std::cin.ignore();                               // discard the buffer
+        bool bLevelComplete = PlayGame(Round); // 'b' prefix for booleans is an Unreal style-convention
+        std::cin.clear();                      // clear any errors
+        std::cin.ignore();                     // discard the buffer
 
         if (bLevelComplete == true)
         {
             std::cout << "\nYou did it!\n\n";
 
             // increase the level difficulty
-            DifficultyLevel++;
+            Round++;
         }
         else
         {
             std::cout << "\nThe bomb exploded and you just died horribly!\n\n";
         }
     }
+
+    std::cout << "CONGRATULATIONS, you completed the challenge and are now a 007 agent!\n\n";
 
     return 0;
 }
