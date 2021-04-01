@@ -32,4 +32,4 @@
 *.app
 
 # CS workspace
-workspace.code-workspace
+.vscode/*

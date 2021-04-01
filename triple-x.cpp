@@ -14,8 +14,11 @@ void PrintIntroduction()
     std::cout << "Enter the correct code to continue...\n\n";
 }
 
-bool PlayGame()
+bool PlayGame(int Difficulty)
 {
+    std::cout << "Round " << Difficulty << "\n";
+    std::cout << "#######" << "\n\n";
+
     // declare the 3 number code
     const int CodeA = 4;
     const int CodeB = 3;
@@ -54,23 +57,25 @@ int main()
 {
     PrintIntroduction();
 
-    int Round = 1;
-    int MaxRounds = 3;
-    while (Round <= MaxRounds)
+    int DifficultyLevel = 1;
+    int MaxDifficulty = 3;
+    while (DifficultyLevel <= MaxDifficulty)
     {
-        bool bLevelComplete = PlayGame(); // 'b' prefix for booleans is an Unreal style-convention
+        bool bLevelComplete = PlayGame(DifficultyLevel); // 'b' prefix for booleans is an Unreal style-convention
+        std::cin.clear();                                // clear any errors
+        std::cin.ignore();                               // discard the buffer
+
         if (bLevelComplete == true)
         {
             std::cout << "\nYou did it!\n\n";
+
+            // increase the level difficulty
+            DifficultyLevel++;
         }
         else
         {
             std::cout << "\nThe bomb exploded and you just died horribly!\n\n";
         }
-        std::cin.clear();  // clear any errors
-        std::cin.ignore(); // discard the buffer
-
-        Round++;
     }
 
     return 0;
